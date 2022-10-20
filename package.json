@@ -1,0 +1,29 @@
+{
+  "name": "mugstech-cloud-watch",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "version": "1.0.0",
+  "description": "Add logs to CloudWatch in an AWS lambda",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.build.json --declaration",
+    "prepare": "npm run build",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "aws CloudWatch",
+    "aws logs",
+    "logs"
+  ],
+  "author": "Liberty Mugwara",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.192.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
