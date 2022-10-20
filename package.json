@@ -2,7 +2,7 @@
   "name": "mugstech-cloud-watch",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add logs to CloudWatch in an AWS lambda",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
