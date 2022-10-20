@@ -5,25 +5,30 @@ import {
 
 const DEFAULT_REGION = "eu-central-1";
 
-interface ICloudWatchParams {
-  logStreamName: string;
+interface ICloudWatchParams<TLogStreamName, TLogGroupName> {
+  logStreamName: TLogStreamName extends string ? TLogStreamName : string;
   message: string;
-  logGroupName: string;
+  logGroupName: TLogStreamName extends string ? TLogStreamName : string;
   region?: string;
   sequenceToken?: string;
 }
 
-export async function logToAws({
+export async function logToAws<TLogStreamName, TLogGroupName>({
   logStreamName,
   message,
   logGroupName,
   region = DEFAULT_REGION,
-}: ICloudWatchParams) {
+}: ICloudWatchParams<TLogStreamName, TLogGroupName>) {
   try {
-    await logToCloudWatch({ logStreamName, message, logGroupName, region });
+    await logToCloudWatch<TLogStreamName, TLogGroupName>({
+      logStreamName,
+      message,
+      logGroupName,
+      region,
+    });
   } catch (err: any) {
     if (err.expectedSequenceToken)
-      await logToCloudWatch({
+      await logToCloudWatch<TLogStreamName, TLogGroupName>({
         logStreamName,
         message,
         logGroupName,
@@ -32,13 +37,13 @@ export async function logToAws({
   }
 }
 
-async function logToCloudWatch({
+async function logToCloudWatch<TLogStreamName, TLogGroupName>({
   logStreamName,
   message,
   logGroupName,
   region = DEFAULT_REGION,
   sequenceToken = "1",
-}: ICloudWatchParams) {
+}: ICloudWatchParams<TLogStreamName, TLogGroupName>) {
   const cloudWatchClient = new CloudWatchLogsClient({ region });
 
   return cloudWatchClient.send(
