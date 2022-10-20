@@ -32,7 +32,7 @@ export async function logToAws({
   }
 }
 
-export async function logToCloudWatch({
+async function logToCloudWatch({
   logStreamName,
   message,
   logGroupName,
