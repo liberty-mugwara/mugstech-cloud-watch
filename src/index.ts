@@ -8,7 +8,7 @@ const DEFAULT_REGION = "eu-central-1";
 interface ICloudWatchParams<TLogStreamName, TLogGroupName> {
   logStreamName: TLogStreamName extends string ? TLogStreamName : string;
   message: string;
-  logGroupName: TLogStreamName extends string ? TLogStreamName : string;
+  logGroupName: TLogGroupName extends string ? TLogGroupName : string;
   region?: string;
   sequenceToken?: string;
 }
