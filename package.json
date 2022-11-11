@@ -21,7 +21,8 @@
   "author": "Liberty Mugwara",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-cloudwatch-logs": "^3.192.0"
+    "@aws-sdk/client-cloudwatch-logs": "^3.208.0",
+    "tslib": "^2.4.1"
   },
   "devDependencies": {
     "typescript": "^4.8.4"
