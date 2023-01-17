@@ -1,0 +1,5 @@
+{
+  "name": "mugstech-cloud-watch",
+  "publish": true,
+  "compatibleRuntimes": ["nodejs14.x", "nodejs16.x", "nodejs18.x"]
+}
